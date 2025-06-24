@@ -588,6 +588,16 @@ Here, $A$ and $\phi$ define the oscillation amplitude and the initial phase, res
 %
 It is straightforward to verify that the initial time variable $T_0$ is a constant of motion, $\dot{T}_0 = 0$, and satisfies the commutation relation $\{T_0,H\} = 1$. The $w_\infty$-charges are then given by $W_{a,b} = T_0^{a+1}H^{b+1}$ with $(a,b)\in\mathbb{Z}^2$ and $H$ and $T_0$ defined in Eq.~\eqref{eq:1D HO H and T0}.  
 
+In~\cite{Augustin1979}, a similar set of variables has been introduced referred to as action-angle variables. These are denoted by $(n,\phi)$ and are related to the variables $(T_0, H)$ as
+\be
+\phi = \omega (T_0 + t),\qquad n = H/\omega - \hbar/2,
+\ee
+readily satisfying $\{\phi,n\} = 1$. Note that the factor of $\hbar / 2$ has been introduced to make closer connection to the quantum mechanical analysis down below. The Hamilton equations in these variables are given by
+\be
+\dot{n} = \pdv{H}{\phi} = 0,\qquad \dot{\phi} = \pdv{H}{n} = \omega.
+\ee
+While $H$ as a function of $p$ and $q$ is a strictly non-negative function due to the reality of $p$ and $q$, the same does not apply to $H$ as a function of $n$ which can become negative~\cite{Augustin1979}.  
+
 \subsubsection{Invariance of the action in terms of $(q,p)$ variables }
 
 \label{OHflow}
@@ -674,31 +684,40 @@ We observed in the previous section that $T_0$-reparametrizations, $\tilde{T}_0 
 The example of the single 1-dimensional harmonic oscillator can be straightforwardly generalized to d dimensions. That is because the Hamiltonian of the d-dimensional harmonic oscillator, given by 
 %
 \begin{equation}
-H = \sum_{\alpha = 1}^\mathrm{d}\left(\frac{1}{2m}q_\alpha^2+\frac{m\omega^2}{2}q_\alpha^2\right),
+H = \sum_{\alpha = 1}^\mathrm{d}\left(\frac{1}{2m}p_\alpha^2+\frac{m\omega^2}{2}q_\alpha^2\right),
 \end{equation}
 %
 admits an immediate split into d 1-dimensional decoupled harmonic oscillators. As a result, the constants of motion $T_0^{(\alpha)}$ and $H^{(\alpha)}$ can be identified in analogy to Eq.~\eqref{eq:1D HO H and T0}. In the following section, we consider the example of coupled harmonic oscillators where this strategy cannot be directly applied due to the interaction term.
-
+ 
 
 \section{Generally covariant quantum mechanics}
 
 \subsection{Standard quantum harmonic oscillator}
 
-Rewrite the standard quantum theory of the harmonic oscillator,
+The quantum mechanical Hamilton operator for the harmonic oscillator is defined via the operators $\hat{q}$, $\hat{p}$ as 
 \be
-[a, a^{\dagger}] = i \hbar,
+\hat{H} = \frac{\hat{p}^2}{2m} + \frac{m\omega^2}{2}\hat{q}^2.
 \ee
-with
+Following standard protocol, the eigenvalues of the Hamiltonian are found by introducing the creation and annihilation operators $\hat{a}$ and $\hat{a}^\dagger$, respectively defined as
 \be
-H = \hbar \omega \left( a^\dagger a + \frac{1}{2}\right) 
+\hat{q} = \sqrt{\frac{\hbar}{2m\omega}}\left(\hat{a}^\dagger + \hat{a}\right),\qquad \hat{p} = i\sqrt{\frac{\hbar m\omega}{2}}\left(\hat{a}^\dagger - \hat{a}\right),
 \ee
-with  and vacuum state
+satisfying the commutator
 \be
-a |0 \ra = 0.
+[a, a^{\dagger}] = i \hbar.
 \ee
+The annihilation operator defines the vacuum state $\ket{0}$ via the relation $\hat{a}\ket{0} = 0$. The states $\ket{n}$ with $n\in\mathbb{N}$ are eigenstates of the number operator $\hat{N} = \hat{a}^\dagger\hat{a}$ with $\hat{N}\ket{n} = n\ket{n}$. The Hamiltonian $\hat{H}$ can then be brought to the well-known form
+\be
+\hat{H} = \hbar \omega \left( \hat{N} + \frac{1}{2}\right),
+\ee
+with eigenvalues
+\be
+\hat{H}\ket{n} = \hbar\omega(n+\frac{1}{2})\ket{n},\quad n\in\mathbb{N}_0.
+\ee
+
 The operator $T_0$ cannot be expressed in terms of the creation and annihilation operators as it is an involved non-polynomial function of the classical canonical variables $(q,p)$. However, in close analogy to the action-angle variables developed in~\cite{Augustin1979}, one can introduce the operator $\hat{\tilde{H}}$  with eigenstates 
 \be
-\hat{\tilde{H}}\ket{n} = \hbar\omega\left(\hat{n}+\frac{1}{2}\right)\ket{n}, \quad n\in\mathbb{Z},
+\hat{\tilde{H}}\ket{n} = \hbar\omega\left(n+\frac{1}{2}\right)\ket{n}, \quad n\in\mathbb{Z},
 \ee
 and its conjugate angle operator $\hat{\phi} = \omega \hat{T}_0$ with eigenstates
 \be
@@ -731,6 +750,30 @@ A special case would corresponds to the comparison between two parametrizations 
 \ee
 We know that this relation effectively introduce a partition of the real line which plays the role of an horizon. It is known that this partition naturally relates the vacuum seen in $\tilde{T}_0$ to a thermal vacuum  seen by $T_0$. See \cite{Arzano:2018oby,Arzano:2020mhg}. Using the same method, we have to show that i) the vacuum state is only relative to a given choice of $T_0$ and $H$, making explicit the notion of relative state in quantum mechanics, and ii) that one can reproduce the very same Hawking-like radiation and notion of temperature already in this generally covariant version of quantum mechanics. 
 
+An idea to implement this here is to consider eigenstates of the operator $\hat{H}$. Similarly, one can find eigenstates of the operator $\tilde{H}$ after the transformation $(T_0,H)\rightarrow (\tilde{T}_0,\tilde{H})$. Then, the two sets of eigenstates can be compared.
+
+If $H\rightarrow \varphi(H)$, then there is no mixing introduced as eigenstates of $H$ are also eigenstates of $\varphi(H)$.
+
+\textcolor{red}{Relation to thermal spectrum: using as configuration variable $T_0$ and as canonically conjugate momentum $H$, we can consider a canonical quantization of the system, via
+\be
+\comm{\hat{T}_0}{\hat{H}} = i,
+\ee
+and formally define states $\ket{T_0},\ket{H}$ on which the operators $\hat{T}_0$ and $\hat{H}$ act as
+\be
+\hat{T}_0\ket{T_0} = T_0 \ket{T_0},\quad \hat{H}\ket{T_0} = -i\pdv{}{T_0}\ket{T_0},\quad \hat{T}_0\ket{H} = i\pdv{}{H}\ket{H},\quad \hat{H}\ket{H} = H\ket{H}.
+\ee
+Given that, the question is how these states relate to eigenstates of the transformed variables $\tilde{T}_0,\tilde{H}$, obtained classically via a symplectomorphism. To make a direct connection to~\cite{Arzano:2018oby}, lets consider a transformation $(T_0,H)\rightarrow(\varphi{T}_0,H/\varphi')$ such that $\comm{\hat{H}}{\hat{H}/\hat{\varphi'}} = i\hat{H}$. Indeed, such a transformation can be readily given
+\be
+\tilde{T}_0 = \varphi(T_0) = -\log(T_0),\qquad \tilde{H} = H/\varphi' = -HT_0.
+\ee
+A related transformation would be given by $(T_0,H)\rightarrow (\mathrm{e}^{\kappa T_0}, H\kappa\mathrm{e}^{-\kappa T_0})$. One can quickly check that the Hamiltonians $H$ and $\tilde{H}$ satisfy
+\be
+\comm{\hat{H}}{\hat{H}\mathrm{e}^{\kappa\hat{T}_0}} = i\kappa^2 H\mathrm{e}^{-\kappa\hat{T}_0} = i\kappa\hat{\tilde{H}}.
+\ee
+In this case, $\tilde{H}$ acts as the generator of translation while $H$ acts as the generator of dilations.
+For the moment, we neglect issues of operator ordering or definedness of the $\log$ of $T_0$.
+This relation is exactly the commutation relation between the generator of translations on the real line, $P$, and the generator of dilations on the real line (acting transitively only on $\R_+$), denoted as $R$, which also satisfy $[P,R] = iP$.
+Following closely the analysis of~\cite{Arzano:2018oby}, the momentum eigenstates of the $P$ and $R$ operators satisfy a relation which leads to a thermal spectrum. In our case, the relation is given between eigenstates of $\hat{H}$ and $\hat{H}/\hat{\varphi'}$.}
 
 
 
